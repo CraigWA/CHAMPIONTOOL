@@ -1,0 +1,84 @@
+
+
+<html>
+    <style>
+        body {
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(5, 1fr);
+            display:grid;
+            background-image: url(https://static.wikia.nocookie.net/leagueoflegends/images/5/53/Summoner%27s_Rift_Update_Map.png/revision/latest/scale-to-width-down/1200?cb=20170223053555);
+            background-repeat: no-repeat;
+            background-size: 100%;
+            background-size: cover;
+        }
+        #inputs{
+            display: flex;
+            flex-direction: column;
+        }
+        textarea {
+            grid-column-start: 2;
+            grid-column-end: 4;
+            margin: 2%;
+            background: lavender;
+            border: solid black;
+            font-size: 30;
+            color: black;
+            border-radius: 10px;
+        }
+        image {
+            width: 100%;
+        }
+        #button {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            bottom: 0;
+            right: 0;
+        }
+        #bio {
+            grid-column-start: 1;
+            grid-column-end: 2;
+        }
+        #art {
+            background: url(https://static.wikia.nocookie.net/lolesports_gamepedia_en/images/1/18/Skin_Loading_Screen_Classic_Ahri.jpg);
+            grid-column-start: 1;
+            grid-column-end: 2;
+            grid-row-start: 2;
+            grid-row-end: 6;
+            background-size: cover;
+        }
+    </style>
+    <body>
+        <input type="file" id="button" multiple>
+        <textarea id="bio">BIO</textarea>
+        <div id="art">
+            
+        </div>
+            <textarea>P</textarea>
+            <textarea>Q</textarea>
+            <textarea>W</textarea>
+            <textarea>E</textarea>
+            <textarea>R</textarea>
+
+    </body>
+
+    <script>
+
+    const fileSelector = document.getElementById('button');
+    fileSelector.addEventListener('change', (event) => {
+    const fileList = event.target.files;
+    console.log(fileList);
+
+    var reader = new FileReader();
+
+            reader.onload = function (e) {
+                console.log(e.target.result)
+                document.getElementById('art').style.background = 'url("' + e.target.result + '")'
+                document.getElementById('art').style.backgroundSize = 'cover'
+            }
+
+            reader.readAsDataURL(event.target.files[0]);
+
+    })
+    </script>
+</html>
